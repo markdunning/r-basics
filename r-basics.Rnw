@@ -297,7 +297,7 @@ mean(M[,3])
 
 @
 
-To construct the loop we need to define a test condition and some R code to run for each \textit{iteration}. As we want to 'loop' over each column, we make a variable \Rcode{i} to represent the column that we are currently working with. At each iteration, \Rcode{i} takes a particular value between the limits we have defined. In our case starting with 1 and ending with 10. The code below shows how the value of i changes as the code executes.
+To construct the loop we need to define a test condition and some R code to run for each \textit{iteration} (which can be as long as we like). In this example we want to 'loop' over each column and make a variable \Rcode{i} to represent the column that we are currently working with \footnote{Conventionally we often use variables named i, j,...etc when defining loops}. At each iteration, \Rcode{i} takes a particular value between the limits we have defined. The code is then executed by substituting our particular value of \Rcode{i}. In our case starting with 1 and ending with 10. The code below shows how the value of i changes as the code executes.
 
 <<>>=
 for(i in 1:10){
