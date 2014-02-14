@@ -37,7 +37,7 @@ BiocStyle::latex()
 \tableofcontents
 
 \section{R basics}
-R is a command line driven environment. This means you have to type in commands (line-by-line) for it to compute or calculate something. In this practical we want you to get used to this style of programming. For the analysis of microarray data, we hope you won't need much knowledge of R programming. However a basic understanding will be very beneficial. In the following exercises you will discover how to enter data into R and then make calculations involving this data.\\
+R is a command-line environment. This means you have to type in commands (line-by-line) for it to compute or calculate something. In this practical we want you to get used to this style of programming. For the analysis of microarray data, we hope you won't need much knowledge of R programming. However a basic understanding will be very beneficial. In the following exercises you will discover how to enter data into R and then make calculations involving this data.\\
 
 \exercise Create an object called \Rcode{x} and let it be equal to \Rcode{2}. Create another object called \Rcode{y} and let it be equal to \Rcode{3}. Now perform basic arithmatic operations on x and y.\\
 
@@ -80,7 +80,7 @@ show(y)
 y
 @
 
-\textinfo With the cursor at the prompt, use the up and down arrows to scroll through previous commands - this is particularly useful if you type something slightly incorrectly the first time and want to bring back the command again to change something minor and re-enter the command.
+\textinfo With the cursor at the prompt, use the up and down arrows to scroll through previous commands - this is particularly useful if you type something slightly incorrectly the first time and want to bring back the command again to change something minor and re-enter the command.\\
 
 
 \textinfo If at any stage you find that R is not responding, it has hung or you want to stop a command midway through its execution, go to the Stop icon at the top of your R GUI interface. In some cicumstances ESC is also useful. ctrl-C works for those using a unix command line version of R or the emacs environment.
@@ -88,9 +88,9 @@ y
 \section{R functions}
 R is a program designed for statistical computing and graphical displays of data. There are hundreds of built in functions available at your disposal. Some functions are available as standard, and others are packaged into libraries which you need to install separately.
 
-\exercise Create a vector called \Rcode{v} containing a random sample of size 10 from a uniform distribution. Find the average of this sample using the function mean.
+\exercise Create a vector called \Rcode{v} containing a random sample of size 10 from a uniform distribution. Find the average of this sample using the function mean.\\
 
-\textinfo The function \Rfunction{runif} generates random values from a uniform distribution. The function requires certain bits of information for it to operate. The bits of information required are specified by the aguments of the function. Functions can have default settings for some or all of their arguments. \Rfunction{runif} requires \Rcode{n} (the sample size) to be specified but has default settings for its other arguments \Rcode{min} and \Rcode{max} (defining the minimum and maximum values to randomly sample between). You can use the \Rfunction{args} function to discover the arguments for a particular function. Notice that the vector v has 10 elements in it. These 10 elements correspond to each of the ten random samples of real values between the default limits of 0 and 1. The average of such a random sample, which we calculated using the mean function, should tend towards to 0:5.
+\textinfo The function \Rfunction{runif} generates random values from a \textit{unif}orm distribution. The function requires certain bits of information for it to operate. The bits of information required are specified by the \textit{arguments} of the function. Functions can have default settings for some or all of their arguments. \Rfunction{runif} requires \Rcode{n} (the sample size) to be specified but has default settings for its other arguments \Rcode{min} and \Rcode{max} (defining the minimum and maximum values to randomly sample between). You can use the \Rfunction{args} function to discover the arguments for a particular function. 
 
 <<>>=
 args(runif)
@@ -101,12 +101,13 @@ x=mean(v)
 x
 @
 
-\exercise Now use the functions help and args to see how the runif and mean functions work. Make
-sure you understand how to use the various arguments of the functions runif and mean. Try increasing and decreasing the sample size of your random sample and try sampling from a different range of values (i.e. instead of using the default values of min and max, set your own values).\\
+\textinfo Notice that the vector v has 10 elements in it. These 10 elements correspond to each of the ten random samples of real values between the default limits of 0 and 1. The average of such a random sample, which we calculated using the mean function, should tend towards to 0:5.
 
-\noteright Notice that there is only one argument listed when typing args(mean). R displays x and then three dots to indicate that there are further arguments (other than x) that can be secified to this function. Use the help man page on (mean) to find out what these further arguments are. What does the trim argument do? How does R understand when there is missing data? (Hint: what is an \Rcode{NA} value?) \\
+\exercise Now use the functions \Rfunction{help} and \Rfunction{args} to see how the \Rfunction{runif} and \Rfunction{mean} functions work. Make sure you understand how to use the various arguments of the functions \Rfunction{runif} and \Rfunction{mean}. Try increasing and decreasing the sample size of your random sample and try sampling from a different range of values (i.e. instead of using the default values of min and max, set your own values).\\
 
-\notebell The order of arguments does not matter if you assign values to the names of arguments in a function. See the example below where the arguments of runif have been given in different ways. When giving values as arguments to a function, the order only matters when you have not specifically assigned the values to the names of the various possible arguments.
+\noteright Notice that there is only one argument listed when typing args(mean). R displays x and then three dots to indicate that there are further arguments (other than x) that can be specified to this function. Use the help man page on (mean) to find out what these further arguments are. What does the trim argument do? How does R understand when there is missing data? (Hint: what is an \Rcode{NA} value?) \\
+
+\notebell The order of arguments does not matter if you assign values to the names of arguments in a function. See the example below where the arguments of \Rfunction{runif} have been given in different ways. When giving values as arguments to a function, the order only matters when you have not specifically assigned the values to the names of the various possible arguments.
 
 <<>>=
 args(runif)
@@ -126,9 +127,9 @@ mean(v, trim = 0.1)
 \exercise Create a vector v containing the numbers 2, 4, 3, 1, 7. Confirm the object is of type
 vector and find the length of v. Use the subsetting operator in R to access the 2nd element in this vector. Practise subsetting different elements of the vector. Reverse the order of the elements in v.\\
 
-\noteright A vector is a one dimensional object, containing elements that are concatenated (hence the "c" in the notation \Rcode{c(: : :,: : :,: : :)}). Subsetting a vector requires using the \Rcode{[ ]} operators.\\
+\noteright A vector is a one dimensional object, containing elements that are concatenated (hence the "c" in the notation \Rcode{c(...,...,...)}). Subsetting a vector requires using the \Rcode{[ ]} operators.\\
 
-\noteright The elements in a vector (the values it contains) may be numeric or character values. Notice at the end of this exercise that we put characters in a vector. Now functions like length still work, but mean will not (since it requires numeric values to compute a mean). We use double quotes to specify a character rather than the name of an object for R to interpret.\\
+\noteright The elements in a vector (the values it contains) may be numeric or character values. Notice at the end of this exercise that we put characters in a vector. Now functions like \Rfunction{length}still work, but \Rfunction{mean} will not (since it requires numeric values to compute a mean). We use double quotes to specify a character rather than the name of an object for R to interpret.\\
 
 <<>>=
 v = c(2, 4, 3, 1, 7)
@@ -213,7 +214,7 @@ namedlist$M[1, 4]
 \section{R graphics basics}
 
 
-\textinfo Probably, the most important graphing function in R is \Rfunction{plot}. Most of the limma plotting functions are based on this function. In this section we will look briefly at the plot function paying particular attention to understanding some of the key plotting parameters that can be altered to control the plot display features.\\
+\textinfo Probably, the most important graphing function in R is \Rfunction{plot}. In this section we will look briefly at the \Rfunction{plot} function paying particular attention to understanding some of the key plotting parameters that can be altered to control the plot display features.\\
 
 \exercise Reproduce the code below to learn how to control plot features such as the axis labels
 and plotting character size, shape and colour. Use the help on par to help clarify your understanding of making plots in R.\\
@@ -277,4 +278,62 @@ plot(1:10, 1:10, pch = ".")
 text(1:10, 1:10, labels = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j"))
 @
 
+\section{R Programming}
+
+With knowledge of a few programming basics, we can save ourselves effort in typing. 
+
+\subsection{The \Rcode{for} loop}
+
+\exercise Construct a matrix of 10 rows and columns and populate with random numbers. Calculate the mean of each column using a loop.
+
+\textinfo It is trival to calculate the mean of each column manually in turn. However, this would be tedious for high-dimensional data. Moreover, if we needed to re-use the code on a different matrix, we would have modify our code every time.
+
+<<>>=
+
+M <- matrix(nrow=10,ncol=10,runif(100,0,1))
+mean(M[,1])
+mean(M[,2])
+mean(M[,3])
+
+@
+
+To construct the loop we need to define a test condition and some R code to run for each \textit{iteration}. As we want to 'loop' over each column, we make a variable \Rcode{i} to represent the column that we are currently working with. At each iteration, \Rcode{i} takes a particular value between the limits we have defined. In our case starting with 1 and ending with 10. The code below shows how the value of i changes as the code executes.
+
+<<>>=
+for(i in 1:10){
+  print(paste("value of i is ", i))
+}
+@
+
+We now change to code to calculate the mean of each column
+
+<<>>=
+for(i in 1:10){
+  print(mean(M[,i]))
+}
+@
+
+
+\subsection{\Rcode{if} / \Rcode{else}}
+
+\exercise 
+
+<<>>=
+for(i in 1:ncol(M)){
+  if(mean(M[,i]) > 0.5){  
+    print("Higher")
+  }
+  else{
+    print("Lower")
+  }
+}
+@
+
+\subsection{\Rcode{apply}}
+
+
+<<>>=
+apply(M, 1, mean)
+apply(M, 2, mean)
+@
 \end{document}
