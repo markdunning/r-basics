@@ -37,7 +37,7 @@ BiocStyle::latex()
 \tableofcontents
 
 \section{R basics}
-R is a command-line environment. This means you have to type in commands (line-by-line) for it to compute or calculate something. In this practical we want you to get used to this style of programming. For the analysis of microarray data, we hope you won't need much knowledge of R programming. However a basic understanding will be very beneficial. In the following exercises you will discover how to enter data into R and then make calculations involving this data.\\
+R is a command-line environment. This means you have to type in commands (line-by-line) for it to compute or calculate something. In this practical we want you to get used to this style of programming. For the analysis of high-throughput data, we hope you won't need much knowledge of R programming. However a basic understanding will be very beneficial. In the following exercises you will discover how to enter data into R and then make calculations involving this data.\\
 
 \exercise Create an object called \Rcode{x} and let it be equal to \Rcode{2}. Create another object called \Rcode{y} and let it be equal to \Rcode{3}. Now perform basic arithmatic operations on x and y.\\
 
@@ -64,7 +64,7 @@ z = 3 * (x + y) + 1
 z
 @
 
-\notebell If you type something incorrectly in R, you will get an error. Type z=2*(x+y+1 and you will see that R detects that you haven't finished the command, it displays a new line with a + symbol. R is waiting for additional code and in particular here, it is waiting for the final bracket from the previous command. Finish the command by adding the closing bracket. Now type x=2+2 x to get an idea of the kind of error messages R gives. In this latter example, x=2+2;x is the correct syntax.
+\warning{If you type something incorrectly in R, you will get an error. Type z=2*(x+y+1 and you will see that R detects that you haven't finished the command, it displays a new line with a + symbol. R is waiting for additional code and in particular here, it is waiting for the final bracket from the previous command. Finish the command by adding the closing bracket. Now type x=2+2 x to get an idea of the kind of error messages R gives. In this latter example, x=2+2;x is the correct syntax}
 
 
 You can type the following command
@@ -105,9 +105,9 @@ x
 
 \exercise Now use the functions \Rfunction{help} and \Rfunction{args} to see how the \Rfunction{runif} and \Rfunction{mean} functions work. Make sure you understand how to use the various arguments of the functions \Rfunction{runif} and \Rfunction{mean}. Try increasing and decreasing the sample size of your random sample and try sampling from a different range of values (i.e. instead of using the default values of min and max, set your own values).\\
 
-\noteright Notice that there is only one argument listed when typing args(mean). R displays x and then three dots to indicate that there are further arguments (other than x) that can be specified to this function. Use the help man page on (mean) to find out what these further arguments are. What does the trim argument do? How does R understand when there is missing data? (Hint: what is an \Rcode{NA} value?) \\
+\noteright Notice that there is only one argument listed when typing args(mean). R displays x and then three dots to indicate that there are further arguments (other than x) that can be specified to this function. Use the help man page on \Rfunction{mean} to find out what these further arguments are. What does the trim argument do? How does R understand when there is missing data? (Hint: what is an \Rcode{NA} value?) \\
 
-\notebell The order of arguments does not matter if you assign values to the names of arguments in a function. See the example below where the arguments of \Rfunction{runif} have been given in different ways. When giving values as arguments to a function, the order only matters when you have not specifically assigned the values to the names of the various possible arguments.
+\noteright The order of arguments does not matter if you assign values to the names of arguments in a function. See the example below where the arguments of \Rfunction{runif} have been given in different ways. When giving values as arguments to a function, the order only matters when you have not specifically assigned the values to the names of the various possible arguments.
 
 <<>>=
 args(runif)
@@ -191,7 +191,7 @@ is.list(mylist)
 mylist
 @
 
-\notebell If you use single square brackets to subset a list, you can be tricked into thinking this is the correct way to extract individual objects from a list in R. Notice below, that \Rcode{mylist[1]} gives output displaying \Rcode{[[1]]} on the first line indicating that you've now got a new list containing only one object (i.e. a subset of the original list, with one object only, but still recognised by R as an object of type list).\\
+\warning{If you use single square brackets to subset a list, you can be tricked into thinking this is the correct way to extract individual objects from a list in R. Notice below, that \Rcode{mylist[1]} gives output displaying \Rcode{[[1]]} on the first line indicating that you've now got a new list containing only one object (i.e. a subset of the original list, with one object only, but still recognised by R as an object of type list).}\\
 
 \textinfo It is important to distinguish between extracting an object from a list and subsetting a list. Remember, single brackets are for subsetting, double brackets are for extracting an object from a list. If the objects in the list are named, then one can use the dollar operator to extract them.\\
 
@@ -217,7 +217,7 @@ namedlist$M[1, 4]
 \textinfo Probably, the most important graphing function in R is \Rfunction{plot}. In this section we will look briefly at the \Rfunction{plot} function paying particular attention to understanding some of the key plotting parameters that can be altered to control the plot display features.\\
 
 \exercise Reproduce the code below to learn how to control plot features such as the axis labels
-and plotting character size, shape and colour. Use the help on par to help clarify your understanding of making plots in R.\\
+and plotting character size, shape and colour. Use the help on \Rcode{par} to help clarify your understanding of making plots in R.\\
 
 \noteright The basic format for a plot is based on specifying a vector of x values and a vector of y values.
 
@@ -245,10 +245,9 @@ m = matrix(1:12, 3, 4)
 plot(m[,1], m[,2])
 @
 
-\noteright In the next plot, we introduce various plotting parameters including mfrow for putting multiple figures into a plot, pch for specifying the plotting character, cex for specifying the character size used in the plot and col for specifying the colour of the plotting characters.\\
+\noteright In the next plot, we introduce various plotting parameters including mfrow for putting multiple figures into a plot, \Rcode{pch} for specifying the plotting character, \Rcode{cex} for specifying the character size used in the plot and \Rcode{col} for specifying the colour of the plotting characters.\\
 
-\notebell You might be beginning to feel like avoiding typing all these lines of code (wanting to copy and paste commands instead of typing by hand). Indeed, learning R initially takes lots of concentration. You may be finding that it takes a long time to type these more complex lines of code by hand. Also, with lots of code on a single line you are more likely to make errors and it certainly becomes harder to debug or locate errors in your commands. A misplaced or missed comma, a forgotten or extra bracket or an accidental full stop will produce a syntax error. However, resisting the temptation to simply copy and paste will bring it's rewards. It is at this stage, by typing all commands out fully, that you will actually grasp the basic logic behind R programming. Putting in the extra effort early on will benefit you greatly later. In
-some of the more advanced practicals we will shift our focus from the details of R/limma programming to learning more conceptual ideas about the analysis of microarray data. By then you should be practised enough in typing commands efficiently or have enough knowledge of the code that simply copying and pasting commands from electronic lab notes will not significantly detriment your learning.
+\warning{You might be beginning to feel like avoiding typing all these lines of code (wanting to copy and paste commands instead of typing by hand). Indeed, learning R initially takes lots of concentration. You may be finding that it takes a long time to type these more complex lines of code by hand. Also, with lots of code on a single line you are more likely to make errors and it certainly becomes harder to debug or locate errors in your commands. A misplaced or missed comma, a forgotten or extra bracket or an accidental full stop will produce a syntax error. However, resisting the temptation to simply copy and paste will bring it's rewards. It is at this stage, by typing all commands out fully, that you will actually grasp the basic logic behind R programming. Putting in the extra effort early on will benefit you greatly later. In some of the more advanced practicals we will shift our focus from the details of R/limma programming to learning more conceptual ideas about the analysis of high-throughput data. By then you should be practised enough in typing commands efficiently or have enough knowledge of the code that simply copying and pasting commands from electronic lab notes will not significantly detriment your learning.}
 
 <<>>=
 par(mfrow = c(2, 2))
@@ -278,15 +277,26 @@ plot(1:10, 1:10, pch = ".")
 text(1:10, 1:10, labels = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j"))
 @
 
-\section{R Programming}
+\textinfo We have just given examples of the basic plotting functions available in R. More sophisticated options are available through the \Rpackage{lattice} and ggplot2 ({\tt http://ggplot2.org/}) packages.
 
-With knowledge of a few programming basics, we can save ourselves effort in typing. 
+\section{R Programming}
+Rather than just being a statistical toolkit, we can also write programs in R. This is easier than you might think as first. If you have written a few lines of R commands to a text file, then you have already written your first R program. 
+With knowledge of a few programming basics, we can save ourselves effort in typing and make it easier for others to run and adapt our analyses.
 
 \subsection{The \Rcode{for} loop}
+The \Rcode{for} loop is a common programming tool for repeating a particular calculation.  To construct the loop we need to define a start and end-point and some R code to repeat.  The code below shows how a for loop is used to print 10 lines of text to the screen.
+
+<<>>=
+for(i in 1:10){
+  print(paste("value of i is ", i))
+}
+@
+
+In this example we want to 'loop' over particular numbers from 1 to 10, so we make a variable \Rcode{i} to represent the number that we are currently working with \footnote{Conventionally we often use variables named i, j,...etc when defining loops}. At each \textit{iteration}, \Rcode{i} takes a particular value between the limits we have defined. The code between the curly braces \Rcode{\{..\}} is then executed by substituting our particular value of \Rcode{i}.\\
 
 \exercise Construct a matrix of 10 rows and columns and populate with random numbers. Calculate the mean of each column using a loop.
 
-\textinfo It is trival to calculate the mean of each column manually in turn. However, this would be tedious for high-dimensional data. Moreover, if we needed to re-use the code on a different matrix, we would have modify our code every time.
+\textinfo It is trival to calculate the mean of each column manually in turn. However, this would be tedious for high-dimensional data. Moreover, if we needed to re-use the code on a different matrix, we would have to modify our code every time.
 
 <<>>=
 
@@ -297,15 +307,9 @@ mean(M[,3])
 
 @
 
-To construct the loop we need to define a test condition and some R code to run for each \textit{iteration} (which can be as long as we like). In this example we want to 'loop' over each column and make a variable \Rcode{i} to represent the column that we are currently working with \footnote{Conventionally we often use variables named i, j,...etc when defining loops}. At each iteration, \Rcode{i} takes a particular value between the limits we have defined. The code is then executed by substituting our particular value of \Rcode{i}. In our case starting with 1 and ending with 10. The code below shows how the value of i changes as the code executes.
+If you consider the code-chunk above, you'll notice that the code to calculate the mean is the same on every line, except that the index on the matrix \Rcode{M} changes. This is a classic example of when we could use a for loop. \footnote{Disclaimer: for this particular task, the \Rfunction{rowMeans} function could be used}.\\
 
-<<>>=
-for(i in 1:10){
-  print(paste("value of i is ", i))
-}
-@
-
-We now change to code to calculate the mean of each column
+We now write the code to calculate the mean of each column
 
 <<>>=
 for(i in 1:10){
@@ -316,24 +320,97 @@ for(i in 1:10){
 
 \subsection{\Rcode{if} / \Rcode{else}}
 
-\exercise 
+An \Rcode{if} statement is often used in programming languages to allow different pieces of code to be executed depending on the input. The general form is as follows;
+
+
+<<>>=
+
+if (condtion == TRUE){
+  
+  ....do this...
+} else{
+  
+  ...do that....
+}
+
+@
+
+We have a test condition that can either evaluate to \Rcode{TRUE} or \Rcode{FALSE}. If the result is \Rcode{TRUE}, then the first piece of code gets executed ({\tt do this}). Otherwise, the code inside the second set of curly braces gets executed ({\tt do that}).
+
+\exercise Use an \Rcode{if} statement in conjunction with the \Rcode{for} loop from above and print \Rcode{Higher} or \Rcode{Lower} depending on whether the mean of a column is more, or less than, 0.5.\\
+
+As before, we can start thinking about the code we would need to write at each step in the loop. Remember that we can use \Rcode{<, > , ==} operators to compare numeric values. Thus we can compare the means of the first two columns to 0.5 in the following way
+
+<<>>=
+mean(M[,1]) > 0.5
+mean(M[,2]) > 0.5
+@
+
+As these statements return \Rcode{TRUE} or \Rcode{FALSE}, they can be used in the construction of an \Rcode{if} command.
+
+<<>>=
+if (mean(M[,1]) > 0.5) {
+  print("Higher")
+} else{
+  print("Lower")
+}
+@
+
+We can low loop over the columns in the following way
 
 <<>>=
 for(i in 1:ncol(M)){
   if(mean(M[,i]) > 0.5){  
     print("Higher")
-  }
-  else{
+  } else{
     print("Lower")
   }
 }
 @
 
 \subsection{\Rcode{apply}}
+The \Rfunction{apply} function is a shortcut in R to execute to the same function on each row or column of a matrix. It often leads to more-compact and 'cleaner' code. To construct an \Rfunction{apply} statement, we need to specify the matrix we want to operate on, whether to operate on rows (\Rcode{1}) or columns (\Rcode{2}) \footnote{referred to as the MARGIN in the documentation} and what function to use.
 
-
+\exercise Use \Rfunction{apply} statements to calculate the row of each row and column in \Rcode{M}
 <<>>=
 apply(M, 1, mean)
 apply(M, 2, mean)
 @
+
+
+
+\subsection{Reading and writing files}
+
+We will often want to write our results as a file, in order to share them with collaborators that are less R-savvy! Matrices are particularly ameanable to output as they can be easily formatted into rows and columns that programs like Excel can display. The \Rfunction{write.table} function is the most basic way of exporting tabular data which gives the user control over the type of character used to separate columns (common ones being a space, comma, or tab) and whether the row and column names are included in the output. \Rfunction{write.csv} is a useful shortcut for creating comma-separated files. 
+
+\exercise Write the matrix \Rcode{M} out to a comma-separated text file.
+
+<<>>=
+write.csv(M, file="MyMatrix.csv")
+@
+
+At some point in the analysis, we might also need to read data in from a tabular file. There are many options for doing this (\Rfunction{read.table}, \Rfunction{read.delim}, \Rfunction{scan} and \Rfunction{read.lines} to name but a few..). If we have comma-separated data though, we can use \Rfunction{read.csv}. \footnote{To deal with the Excel \Rcode{xlsx} format directly, the \Rpackage{gdata} package can be used
+
+\exercise Read the file you have just created back into R. }
+
+<<>>=
+newM <- read.csv("MyMatrix.csv")
+newM
+@
+
+\textinfo You may notice that the matrix you have just read contains an extra column. This is because we didn't tell the \Rfunction{write.csv} command to suppress the row names. The column names of the matrix are also \Rcode{V1,...V10}, which are the default when no column names are present in the original matrix.
+
+\exercise Give column names to the matrix \Rcode{M} and write out again without the row names. 
+
+<<>>=
+colnames(M) <- LETTERS[1:10]
+write.csv(M, file="MyMatrix2.csv",row.names=F)
+@
+
+<<>>=
+
+M2 <- read.csv("MyMatrix2.csv")
+M2
+@
+
 \end{document}
