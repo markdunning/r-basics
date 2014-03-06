@@ -369,7 +369,7 @@ for(i in 1:ncol(M)){
 @
 
 \subsection{\Rcode{apply}}
-The \Rfunction{apply} function is a shortcut in R to execute to the same function on each row or column of a matrix. It often leads to more-compact and 'cleaner' code. To construct an \Rfunction{apply} statement, we need to specify the matrix we want to operate on, whether to operate on rows (\Rcode{1}) or columns (\Rcode{2}) \footnote{referred to as the MARGIN in the documentation} and what function to use.
+The \Rfunction{apply} function is a shortcut in R to execute to the same function on each row or column of a matrix. It often leads to more-compact and 'cleaner' code. To construct an \Rfunction{apply} statement, we need to specify the matrix we want to operate on, whether to operate on rows (by setting the second argument of \Rfunction{apply} to \Rcode{1}) or columns (setting the second argument to be \Rcode{2}) and what function to use.
 
 \exercise Use \Rfunction{apply} statements to calculate the row of each row and column in \Rcode{M}
 <<>>=
