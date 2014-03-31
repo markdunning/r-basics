@@ -53,14 +53,14 @@ shinyServer(function(input, output){
   
     if(input$means) p2 <- p2 + geom_hline(yintercept = c(mean(df[,1]),mean(df[,2])),lty=2)    
     
-    p2 <- p2 + coord_flip()
-    p1 <- qplot(df[,1], df[,2]) + xlim(0,max(df[,1])) + ylim(0,max(df[,2]))
+    p2 <- p2 + coord_flip() + opts(title="Boxplot")
+    p1 <- qplot(df[,1], df[,2]) + xlim(0,max(df[,1])) + ylim(0,max(df[,2])) + opts(title="Scatter Plot")
     
     m <- lm(df[,2]~df[,1])
     coefs <- data.frame(a =coef(m)[1], b= coef(m)[2])
     
     if(input$ant) p1 <- p1+ geom_abline(data=coefs, aes(intercept=a,slope=b))
-    
+    message(input$ant)
     
     grid.arrange(p1,p2)
     
