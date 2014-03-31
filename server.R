@@ -51,8 +51,9 @@ shinyServer(function(input, output){
     
     p2 <- ggplot(dd, aes(x=variable, y=value))+ geom_boxplot() + coord_flip()
     p1 <- qplot(df[,1], df[,2]) + xlim(0,max(df[,1])) + ylim(0,max(df[,2]))
-    
-    if(input$ant) p1 <- p1 + geom_smooth(col="red")
+    m <- lm(df[,2]~df[,1])
+    coefs <- data.frame(a =coef(m)[1], b= coef(m)[2])
+    if(input$ant) p1 <- p1+ geom_abline(data=coefs, aes(intercept=a,slope=b))
     
     
     grid.arrange(p1,p2)
