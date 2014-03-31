@@ -62,7 +62,7 @@ shinyServer(function(input, output){
     
     p3 <- ggplot(dd, aes(x = value,col=variable)) + geom_density()
     
-    if(input$means) p3 <- p3 + geom_hline(yintercept = c(mean(df[,1]),mean(df[,2])),lty=2)    
+    if(input$means) p3 <- p3 + geom_vline(xintercept = c(mean(df[,1]),mean(df[,2])),lty=2)    
     
     grid.arrange(p1,p2,p3)
     
