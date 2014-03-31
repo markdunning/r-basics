@@ -59,8 +59,7 @@ shinyServer(function(input, output){
     m <- lm(df[,2]~df[,1])
     coefs <- data.frame(a =coef(m)[1], b= coef(m)[2])
     
-    if(input$ant) p1 <- p1+ geom_abline(data=coefs, aes(intercept=a,slope=b))
-    message(input$ant)
+    if(input$line) p1 <- p1+ geom_abline(data=coefs, aes(intercept=a,slope=b))
     
     grid.arrange(p1,p2)
     
