@@ -42,7 +42,7 @@ shinyServer(function(input, output){
  #
   
   
-  output$plot <- reactivePlot(function()){
+  output$plot <- reactivePlot(function(){
     
     dd <- melt(data())
     
