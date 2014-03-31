@@ -325,7 +325,7 @@ An \Rcode{if} statement is often used in programming languages to allow differen
 
 <<>>=
 
-if (condtion == TRUE){
+if (condition == TRUE){
   
   ....do this...
 } else{
