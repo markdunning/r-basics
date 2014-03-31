@@ -52,6 +52,9 @@ shinyServer(function(input, output){
     p2 <- ggplot(dd, aes(x=variable, y=value))+ geom_boxplot() + coord_flip()
     p1 <- qplot(df[,1], df[,2]) + xlim(0,max(df[,1])) + ylim(0,max(df[,2]))
     
+    if(input$ant) p1 <- p1 + geom_smooth(col="red")
+    
+    
     grid.arrange(p1,p2)
     
   }
