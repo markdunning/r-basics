@@ -2,6 +2,7 @@ library(shiny)
 library(plotrix)
 library(ggplot2)
 library(reshape2)
+library(gridExtra)
 shinyServer(function(input, output){
   
   data <- reactive({
@@ -44,10 +45,14 @@ shinyServer(function(input, output){
   
   output$plot <- reactivePlot(function(){
     
+    df <- data()
+    
     dd <- melt(data())
     
-    p <- ggplot(dd, aes(x=variable, y=value))+ geom_boxplot() + coord_flip()
-    print(p)
+    p2 <- ggplot(dd, aes(x=variable, y=value))+ geom_boxplot() + coord_flip()
+    p1 <- qplot(df[,1], df[,2])
+    
+    grid.arrange(p1,p2)
     
   }
 )
