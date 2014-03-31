@@ -50,7 +50,7 @@ shinyServer(function(input, output){
     dd <- melt(data())
     
     p2 <- ggplot(dd, aes(x=variable, y=value))+ geom_boxplot() + coord_flip()
-    p1 <- qplot(df[,1], df[,2])
+    p1 <- qplot(df[,1], df[,2]) + xlim(0,max(df)) + ylim(0,max(df))
     
     grid.arrange(p1,p2)
     
