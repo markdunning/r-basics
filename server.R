@@ -46,7 +46,7 @@ shinyServer(function(input, output){
     
     dd <- melt(data())
     
-    p <- ggplot(dd, aes(x=X, y=Y))+ geom_boxplot()
+    p <- ggplot(dd, aes(x=variable, y=value))+ geom_boxplot() + coord_flip()
     print(p)
     
   }
