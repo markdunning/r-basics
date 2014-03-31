@@ -61,7 +61,6 @@ shinyServer(function(input, output){
     
     if(input$ant) p1 <- p1+ geom_abline(data=coefs, aes(intercept=a,slope=b))
     
-    if(input$means) p2 <- geom_vline(v = mean(df[,1]))
     
     grid.arrange(p1,p2)
     
