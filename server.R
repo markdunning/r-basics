@@ -50,11 +50,12 @@ shinyServer(function(input, output){
     
     
   }
-  
+)
   
   output$summary <- renderPrint({
     model = lm(Y ~ X, data=data())
     summary(model)
   })
   
-})
+}
+  
