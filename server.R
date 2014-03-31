@@ -1,5 +1,4 @@
 library(shiny)
-library(plotrix)
 library(ggplot2)
 library(reshape2)
 library(gridExtra)
@@ -49,7 +48,7 @@ shinyServer(function(input, output){
     
     dd <- melt(data())
     
-    p2 <- ggplot(dd, aes(x=variable, y=value))+ geom_boxplot() 
+    p2 <- ggplot(dd, aes(x=variable, y=value,fill=variable))+ geom_boxplot() 
   
     if(input$means) p2 <- p2 + geom_hline(yintercept = c(mean(df[,1]),mean(df[,2])),lty=2)    
     
@@ -61,7 +60,9 @@ shinyServer(function(input, output){
     
     if(input$line) p1 <- p1+ geom_abline(data=coefs, aes(intercept=a,slope=b))
     
-    grid.arrange(p1,p2)
+    p3 <- ggplot(dd, aes(x = value,col=variable)) + geom_density()
+    
+    grid.arrange(p1,p2,p3)
     
   }
 )
