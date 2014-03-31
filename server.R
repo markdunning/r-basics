@@ -51,7 +51,7 @@ shinyServer(function(input, output){
     
     p2 <- ggplot(dd, aes(x=variable, y=value))+ geom_boxplot() 
   
-    if(input$means) p2 <- geom_hline(v = c(mean(df[,1]),mean(df[,2])),lty=2)    
+    if(input$means) p2 <- p2 + geom_hline(v = c(mean(df[,1]),mean(df[,2])),lty=2)    
     
     p2 <- p2 + coord_flip()
     p1 <- qplot(df[,1], df[,2]) + xlim(0,max(df[,1])) + ylim(0,max(df[,2]))
