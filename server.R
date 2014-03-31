@@ -2,7 +2,6 @@ library(shiny)
 library(plotrix)
 library(ggplot2)
 library(reshape2)
-
 shinyServer(function(input, output){
   
   data <- reactive({
@@ -21,13 +20,37 @@ shinyServer(function(input, output){
     data.frame(X=xx, Y=yy)
   })
   
-  output$plot <- renderPlot({
+#  output$plot <- renderPlot({
+#    plot(data(), xlab="X", ylab="Y", ylim=c(-300,800))
+#    if(input$line) {
+#      abline(lm(Y ~ X, data=data()), col="dark blue")
+#    }
+#    if(input$means) {
+#      abline(v = mean(data()[,1]), lty="dotted")
+#      abline(h = mean(data()[,2]), lty="dotted")
+#    } 
+#    if(input$ant) {
+#      model = lm(Y ~ X, data=data())
+#      txt = paste("The equation of the line is:\nY = ",
+#                  round(coefficients(model)[1],0)," + ",
+#                  round(coefficients(model)[2],3),"X + error")
+      
+#      boxed.labels(50,600,labels=txt,bg="white", cex=1.25)
+#    }    
     
-    dd <- melt(data)
+#  })
+ #
+  
+  
+  output$plot <- reactivePlot(function()){
     
-    ggplot(dd, aes(x = variable, y= value)) + geom_boxplot()
+    dd <- melt(data())
     
-  })
+    p <- ggplot(dd, aes(x=X, y=Y))+ geom_boxplot()
+    
+    
+  }
+  
   
   output$summary <- renderPrint({
     model = lm(Y ~ X, data=data())
