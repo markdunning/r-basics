@@ -69,6 +69,40 @@ shinyServer(function(input, output){
   }
 )
   
+  
+  output$boxplot <- reactivePlot(function(){
+    
+    df <- data()
+    
+    dd <- melt(data())
+    
+    p2 <- ggplot(dd, aes(x=variable, y=value,fill=variable))+ geom_boxplot() 
+    
+    if(input$means) p2 <- p2 + geom_hline(yintercept = c(mean(df[,1]),mean(df[,2])),lty=2)    
+    
+    p2 <- p2 + coord_flip() + opts(title="Boxplot")
+    
+    print(p2)
+    
+  }
+  )
+  
+  output$densityplot <- reactivePlot(function(){
+    
+    df <- data()
+    
+    dd <- melt(data())
+    
+    
+    p3 <- ggplot(dd, aes(x = value,col=variable)) + geom_density()
+    
+    if(input$means) p3 <- p3 + geom_vline(xintercept = c(mean(df[,1]),mean(df[,2])),lty=2)    
+    
+    print(p3)
+    
+  }
+  )
+  
   output$scatterplot <- reactivePlot(function(){
     
     df <- data()
