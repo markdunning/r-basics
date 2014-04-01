@@ -120,7 +120,7 @@ shinyServer(function(input, output){
   )
   
   output$mytable= renderDataTable({
-    df <- data
+    df <- data()
     df
   }
   )
