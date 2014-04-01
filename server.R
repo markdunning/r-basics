@@ -124,6 +124,11 @@ shinyServer(function(input, output){
     df
   }
   )
+  
+  output$ttest <-renderPrint({
+    df <- data()
+    t.test(df[,1],df[,2])
+  })
 
   output$summary <- renderPrint({
     model = lm(Y ~ X, data=data())

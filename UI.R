@@ -33,6 +33,8 @@ shinyUI(pageWithSidebar(
       tabPanel("Scatter Plot",plotOutput("scatterplot")),
       tabPanel("Box Plot",plotOutput("boxplot")),
       tabPanel("Density Plot",plotOutput("densityplot")),
+      tabPanel("t test", h4("Screen output in R"),
+               verbatimTextOutput("test")),
       tabPanel("Summary Statistics",
                h4("Screen output in R"),
                verbatimTextOutput("summary")),
