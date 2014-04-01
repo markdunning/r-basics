@@ -34,7 +34,7 @@ shinyUI(pageWithSidebar(
       tabPanel("Box Plot",plotOutput("boxplot")),
       tabPanel("Density Plot",plotOutput("densityplot")),
       tabPanel("t test", h4("Screen output in R"),
-               verbatimTextOutput("test")),
+               verbatimTextOutput("ttest")),
       tabPanel("Summary Statistics",
                h4("Screen output in R"),
                verbatimTextOutput("summary")),
