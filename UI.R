@@ -29,6 +29,7 @@ shinyUI(pageWithSidebar(
   mainPanel(
     tabsetPanel(
 #      tabPanel("Plot",plotOutput("plot")),
+      tabPanel("The data", dataTableOutput("mydata")),
       tabPanel("Scatter Plot",plotOutput("scatterplot")),
       tabPanel("Box Plot",plotOutput("boxplot")),
       tabPanel("Density Plot",plotOutput("densityplot")),
