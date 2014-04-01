@@ -119,11 +119,12 @@ shinyServer(function(input, output){
   }
   )
   
-  output$mytable= renderDataTable){
+  output$mytable= renderDataTable({
     df <- data
     df
   }
-  )  
+  )
+
   output$summary <- renderPrint({
     model = lm(Y ~ X, data=data())
     summary(model)
