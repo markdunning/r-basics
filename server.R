@@ -127,7 +127,7 @@ shinyServer(function(input, output){
   
   output$ttest <-renderPrint({
     df <- data()
-    t.test(df[,1],df[,2])
+    summary(t.test(df[,1],df[,2]))
   })
 
   output$summary <- renderPrint({
