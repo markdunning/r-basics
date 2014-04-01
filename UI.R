@@ -29,6 +29,7 @@ shinyUI(pageWithSidebar(
   mainPanel(
     tabsetPanel(
       tabPanel("Plot",plotOutput("plot")),
+      tabPanel("Scatter Plot",plotOutput("scatterplot")),
       tabPanel("Summary Statistics",
                h4("Screen output in R"),
                verbatimTextOutput("summary")),

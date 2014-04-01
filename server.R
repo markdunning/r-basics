@@ -69,6 +69,23 @@ shinyServer(function(input, output){
   }
 )
   
+  output$scatterplot <- reactivePlot(function(){
+    
+    df <- data()
+    
+    dd <- melt(data())
+    
+    p1 <- qplot(df[,1], df[,2]) + xlim(0,max(df[,1])) + ylim(0,max(df[,2])) + opts(title="Scatter Plot")
+    
+    m <- lm(df[,2]~df[,1])
+    coefs <- data.frame(a =coef(m)[1], b= coef(m)[2])
+    
+    if(input$line) p1 <- p1+ geom_abline(data=coefs, aes(intercept=a,slope=b))
+    print(p1)    
+  }
+  )
+  
+  
   output$summary <- renderPrint({
     model = lm(Y ~ X, data=data())
     summary(model)
